@@ -7,8 +7,8 @@ pipelines:
             - docker
           script:
             - export DOCKER_BUILDKIT=1
-            - docker build -t cbytedigital/awscli-jq:latest .
+            - docker build -t cbytedigital/aws-cli-jq:latest .
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            - docker push cbytedigital/awscli-jq:latest
+            - docker push cbytedigital/aws-cli-jq:latest
           caches:
             - docker

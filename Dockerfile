@@ -1,5 +1,7 @@
 FROM amazonlinux:latest
 
+LABEL maintainer="devops@cbyte.nl"
+
 # Install required dependencies
 RUN yum install -y \
     python3 \

@@ -5,12 +5,12 @@ For use in e.g.:
 - CI (Gitlab, Travis, Jenkins, CircleCI)
 - Local development
 
-[![DockerHub Badge](http://dockeri.co/image/cbytedigital/awscli-jq)](https://hub.docker.com/r/cbytedigital/awscli-jq/)
+[![DockerHub Badge](http://dockeri.co/image/cbytedigital/aws-cli-jq)](https://hub.docker.com/r/cbytedigital/aws-cli-jq/)
 
 ## Build
 
 ```
-docker build -t cbytedigital/awscli-jq .
+docker build -t cbytedigital/aws-cli-jq .
 ```
 
 ## Usage
@@ -23,17 +23,17 @@ The following examples should be sufficient for simple usage using a CLI on Linu
 Example using environment variables:
 
 ```shell
-docker run -i -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY cbytedigital/awscli-jq aws ...
+docker run -i -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY cbytedigital/aws-cli-jq aws ...
 ```
 
 Example mounting AWS CLI configuration files:
 
 ```shell
-docker run -i -w /work -v $(pwd):/work -v ~/.aws:/home/root/.aws cbytedigital/awscli-jq aws ...
+docker run -i -w /work -v $(pwd):/work -v ~/.aws:/home/root/.aws cbytedigital/aws-cli-jq aws ...
 ```
 
 ```shell
-docker run -i -w /work -v $(pwd):/work -v ~/.aws:/home/root/.aws cbytedigital/awscli-jq jq ...
+docker run -i -w /work -v $(pwd):/work -v ~/.aws:/home/root/.aws cbytedigital/aws-cli-jq jq ...
 ```
 
 ## Postcardware
