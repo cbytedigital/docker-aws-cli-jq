@@ -3,10 +3,12 @@ pipelines:
     main:
       - step:
           name: Build and Push Docker Image
-          image: docker:latest
           services:
             - docker
           script:
+            - export DOCKER_BUILDKIT=1
             - docker build -t cbytedigital/awscli-jq:latest .
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             - docker push cbytedigital/awscli-jq:latest
+          caches:
+            - docker
