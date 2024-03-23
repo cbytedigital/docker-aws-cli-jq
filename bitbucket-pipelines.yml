@@ -1,0 +1,16 @@
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build and Push Docker Image
+          image: docker:latest
+          services:
+            - docker:dind
+          script:
+            - docker build -t cbytedigital/awscli-jq:latest .
+            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            - docker push cbytedigital/awscli-jq:latest
+          # Define the schedule for running this pipeline
+          triggers:
+            - schedule:
+                cron: "0 0 * * MON"
