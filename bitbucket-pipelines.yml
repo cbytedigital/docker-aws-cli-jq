@@ -1,15 +1,19 @@
+definitions:
+  steps:
+    - step: &sync-with-github
+        name: Sync GitHub Mirror
+        image: alpine/git:latest
+        clone:
+          enabled: false
+        script:
+          - git clone --bare git@bitbucket.org:cbytedigital/docker-aws-cli-jq.git
+          - cd docker-aws-cli-jq.git
+          - git push --mirror git@github.com:cbytedigital/docker-aws-cli-jq.git
+
 pipelines:
   branches:
     default:
-      - step:
-          name: Sync GitHub Mirror
-          image: alpine/git:latest
-          clone:
-            enabled: false
-          script:
-            - git clone --bare git@bitbucket.org:cbytedigital/docker-aws-cli-jq.git
-            - cd docker-aws-cli-jq.git
-            - git push --mirror git@github.com:cbytedigital/docker-aws-cli-jq.git
+      - step: *sync-with-github
     main:
       - step:
           name: Build and Push Docker Image
